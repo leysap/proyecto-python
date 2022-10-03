@@ -5,16 +5,13 @@ from datetime import datetime
 import random
 
 
-def crear_persona(request):
-    persona1= Persona(nombre="Brad", apellido="Pitt", edad=random.randrange(1,99),fecha_creacion=datetime.now())
-    persona2= Persona(nombre="Jennifer", apellido="Aniston", edad=random.randrange(1,99),fecha_creacion=datetime.now())
-    persona3= Persona(nombre="George", apellido="Clooney", edad=random.randrange(1,99),fecha_creacion=datetime.now())
-    persona1.save()
-    persona2.save()
-    persona3.save()
+def crear_persona(request,nombre,apellido):
+    persona= Persona(nombre=nombre, apellido=apellido, edad=random.randrange(1,99), fecha_creacion=datetime.now())
+    persona.save()
+
     
     template= loader.get_template("crear_persona.html")
-    template_renderizado= template.render({})
+    template_renderizado= template.render({"personas": persona})
     return HttpResponse(template_renderizado)
 
 def ver_personas(request):
