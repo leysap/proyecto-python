@@ -6,7 +6,7 @@ class Persona(models.Model):
     edad= models.IntegerField()
     fecha_creacion= models.DateTimeField(null=True)
     
-class Libros(models.Model): #Prueba Leo
+class Libro(models.Model): #Prueba Leo
     nombre= models.CharField(max_length=30)
     descripcion= models.CharField(max_length=50)
     categoria= models.IntegerField(max_length=50)
