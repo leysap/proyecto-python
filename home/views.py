@@ -13,6 +13,9 @@ def ver_libros(request):
     
     return render(request,"home/ver_libros.html", {})
 
+def acerca_de_nosotros(request):
+    
+    return render(request, "home/acerca_de_nosotros.html", {})
 
 def index(request):
     return render(request, "home/index.html")
