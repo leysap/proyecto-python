@@ -6,7 +6,14 @@
 
 {% block mi_contenido %}
 <div class="container">
-    <h3>Cargar libro:</h3>
+
+    <form action={% url 'cargar_libro' %} method="POST">
+        {% csrf_token %}
+        <table>
+            {{formulario}}
+        </table>
+        <button>Crear</button>
+    </form>
 </div>
 
 {% endblock mi_contenido %}
