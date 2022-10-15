@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.template import Context, Template, loader
-from home.models import Libros, Persona
+from home.models import Libro, Persona
 from datetime import datetime
 import random
 from django.shortcuts import render
