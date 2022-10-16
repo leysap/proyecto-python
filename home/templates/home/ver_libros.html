@@ -15,10 +15,17 @@
     </form>
 
     <p>
+        
+    {% if libros %}
     {% for libro in libros %}
     <li>Nombre: {{libro.nombre}} , Descripcion: {{libro.descripcion}} , Categoria: {{libro.categoria}}, Precio: {{libro.precio}}, Fecha de creacion: {{libro.fecha_creacion}}</li>
     {% endfor %}
     </p>
+    {% else %}
+    <p>No se encontraron resultados</p>
+    {% endif %}
+    
+    
 
 </div>
 {% endblock mi_contenido %}

@@ -41,7 +41,7 @@ def ver_libros(request):
         libros = Libro.objects.all()
     
     formulario = BusquedaLibroFormulario()
-    return render(request,"home/ver_libros.html", {'formulario': formulario})
+    return render(request,"home/ver_libros.html", {'libros': libros, 'formulario': formulario})
 
 
 def acerca_de_nosotros(request):
