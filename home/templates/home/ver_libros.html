@@ -9,9 +9,16 @@
 <div class="container">
     <h3>Listado de libros:</h3>
     
+    <form action={% url 'ver_libros' %} method="GET">
+            {{formulario}}
+        <button>Buscar</button>
+    </form>
+
+    <p>
     {% for libro in libros %}
     <li>Nombre: {{libro.nombre}} , Descripcion: {{libro.descripcion}} , Categoria: {{libro.categoria}}, Precio: {{libro.precio}}, Fecha de creacion: {{libro.fecha_creacion}}</li>
     {% endfor %}
+    </p>
 
 </div>
 {% endblock mi_contenido %}

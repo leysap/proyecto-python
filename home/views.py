@@ -3,7 +3,7 @@
 from home.models import Libro
 from datetime import datetime
 from django.shortcuts import render, redirect
-from home.forms import LibroFormulario
+from home.forms import LibroFormulario, BusquedaLibroFormulario
 
 def cargar_libro(request):
     
@@ -30,10 +30,18 @@ def cargar_libro(request):
     formulario= LibroFormulario()
     return render(request, "home/cargar_libro.html", {'formulario': formulario})
 
-#Completar con la busqueda
+
 def ver_libros(request):
+            
+    nombre = request.GET.get('nombre',None)
     
-    return render(request,"home/ver_libros.html", {})
+    if nombre : 
+        libros = Libro.objects.filter(nombre__icontains = nombre)
+    else: 
+        libros = Libro.objects.all()
+    
+    formulario = BusquedaLibroFormulario()
+    return render(request,"home/ver_libros.html", {'formulario': formulario})
 
 
 def acerca_de_nosotros(request):
