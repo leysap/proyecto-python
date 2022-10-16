@@ -17,7 +17,7 @@ python manage.py migrate
 ## views.py
 
 Se crearon las siguientes funciones:
-1. cargar_libro:
+1. cargar_libro: 
 2. ver_libros:
 3. acerca_de_nosotros:
 4. index:
@@ -25,7 +25,7 @@ Se crearon las siguientes funciones:
 ## urls.py
 
 - Se crearon los siguientes path:
-1. '':
+1. '': 
 2. 'cargar-libro/':
 3. 'ver-libros/':
 4. 'Nosotros/':
@@ -50,4 +50,4 @@ Se encuentran los archivos estaticos de css, img, iconos, js.
 
 ## templates
 
-
+Se encuentras los html del blog
