@@ -2,8 +2,10 @@ from django import forms
 
 class LibroFormulario(forms.Form):
     nombre= forms.CharField(max_length=30)
-    descripcion= forms.CharField(max_length=50)    
-    categoria= forms.IntegerField()
-    precio= forms.DecimalField(max_digits=5, decimal_places=2)
+    descripcion= forms.CharField(max_length=100)    
+    categoria= forms.CharField(max_length=30)    
+    precio= forms.DecimalField(max_digits=10, decimal_places=3)
     fecha_creacion= forms.DateTimeField(required=False)
-    
+
+class BusquedaLibroFormulario(forms.Form):
+    nombre= forms.CharField(max_length=30, required=False)
