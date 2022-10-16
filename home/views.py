@@ -1,5 +1,3 @@
-# from django.http import HttpResponse
-# from django.template import Context, Template, loader
 from home.models import Libro
 from datetime import datetime
 from django.shortcuts import render, redirect
