@@ -9,9 +9,9 @@
 <div class="container">
     <h3>Listado de libros:</h3>
     
-    {% comment %} {% for persona in personas %}
-    <li>Nombre: {{persona.nombre}} , Apellido: {{persona.apellido}} , Edad: {{persona.edad}}, Fecha de creacion: {{persona.fecha_creacion}}</li>
-    {% endfor %} {% endcomment %}
+    {% for libro in libros %}
+    <li>Nombre: {{libro.nombre}} , Descripcion: {{libro.descripcion}} , Categoria: {{libro.categoria}}, Precio: {{libro.precio}}, Fecha de creacion: {{libro.fecha_creacion}}</li>
+    {% endfor %}
 
 </div>
 {% endblock mi_contenido %}
