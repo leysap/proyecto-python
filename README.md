@@ -28,7 +28,7 @@ Se crearon las siguientes funciones:
 1. '':
 2. 'cargar-libro/':
 3. 'ver-libros/':
-4. 'about/':
+4. 'Nosotros/':
 
 
 ## models.py
