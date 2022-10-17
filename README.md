@@ -15,7 +15,7 @@ Para este proyecto se creó un entorno virtual.
 
 ## ProyectoDjango
  
-Carpeta que se encuentran las configuraciones del proyecto. En ésta anexamos la aplicación "home".
+Carpeta que se encuentran las configuraciones del proyecto. En ésta anexamos la aplicación "home", para trabajar nuestras vistas y distintos tipos de pantallas de nuestra web.
 
 ## APP HOME
 
@@ -71,6 +71,6 @@ Los archivos templates creados son:
 
 - base.html: archivo base, se encuentran las etiquetas html, head, body (dentro de éste: nav, footer y los scripts de js). En la etiqueta nav se crearon enlaces directos para cada template. Además, se usó los "block" para que el resto (templates) pueda cargar su contenido. 
 - acerca_de_nosotros.html: siemple vista que contiene una breve reseña del equipo.
-- cargar_libro.html: visualiza el formulario para cargar un libro.
-- index.html: se encuentra el header.
-- ver_libros.html: Se muestra el listado de libros creados.En este mismo se encuentra el buscador de libro por su nombre. Si no lo encuentra, se muestra un mensaje. 
+- cargar_libro.html: Se agrego una pantalla que permite la carga de los libros a nuestra base de datos, utilizando la clase y la tabla previamente creada.
+- index.html: Se usa como pantalla principal de nuestro proyecto.
+- ver_libros.html: Se muestra el listado de libros creados. En este mismo se encuentra el buscador de libro por su nombre. Si no lo encuentra, se muestra un mensaje de error. 
