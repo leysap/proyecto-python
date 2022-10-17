@@ -18,7 +18,7 @@
         
     {% if libros %}
     {% for libro in libros %}
-    <li>Nombre: {{libro.nombre}} , Descripcion: {{libro.descripcion}} , Categoria: {{libro.categoria}}, Precio: {{libro.precio}}, Fecha de creacion: {{libro.fecha_creacion}}</li>
+    <li><strong>Nombre: </strong> {{libro.nombre}} , <strong>Descripcion:</strong> {{libro.descripcion}} , <strong>Categoria: </strong> {{libro.categoria}} ,<strong> Precio: </strong>{{libro.precio}} , <strong>Fecha de creación:</strong>{{libro.fecha_creacion}}</li>
     {% endfor %}
     </p>
     {% else %}
