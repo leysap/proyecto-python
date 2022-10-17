@@ -5,10 +5,12 @@ Se trata de un blog para poder cargar libros, guardarlos en una base de datos y 
 
 ## ¿Como se levanta el proyecto?
 
-Para este proyecto se creó un entorno virtual.
+Para este proyecto se creó un entorno virtual. 
 
+En consola:
 - Se deben instalar los paquetes del requirements.txt
-- Colocar en la consola: 
+### pip install -r requirements.txt.
+- Siguiente, colocar:
 #### python manage.py makemigrations 
 #### python manage.py migrate 
 #### python manage.py runserver (puerto)
