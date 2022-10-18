@@ -12,6 +12,7 @@ def cargar_libro(request):
         if formulario.is_valid():
             data = formulario.cleaned_data
             nombre = data['nombre']
+            escritor = data['escritor']
             descripcion = data['descripcion']
             categoria= data['categoria']
             precio= data['precio']
@@ -20,7 +21,7 @@ def cargar_libro(request):
             if not fecha_creacion:
                 fecha_creacion=datetime.now()
                 
-            libro = Libro(nombre=nombre, descripcion=descripcion, categoria=categoria, precio=precio,fecha_creacion=fecha_creacion)
+            libro = Libro(nombre=nombre, escritor=escritor, descripcion=descripcion, categoria=categoria, precio=precio,fecha_creacion=fecha_creacion)
             libro.save()
             
             return redirect("ver_libros")
