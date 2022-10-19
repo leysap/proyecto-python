@@ -1,23 +1,19 @@
 {% extends 'home/base.html' %}
 
 {% block titulo_pagina %}
-<title>Cargar Libro</title>
+<title>Iniciar sesion</title>
 {% endblock titulo_pagina %}
 
 {% block mi_contenido %}
 <div class="container">
 
-    <form action={% url 'cargar_libro' %} method="POST">
+    <form action={% url 'login' %} method="POST">
         {% csrf_token %}
         <table>
             {{formulario}}
         </table>
-        <p>
-        <button>Crear</button>
-        </p>
+        <button>Iniciar sesion</button>
     </form>
 </div>
 
 {% endblock mi_contenido %}
-
-

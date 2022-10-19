@@ -2,7 +2,10 @@ from home.models import Libro
 from datetime import datetime
 from django.shortcuts import render, redirect
 from home.forms import LibroFormulario, BusquedaLibroFormulario
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def cargar_libro(request):
     
     if request.method == 'POST':
@@ -29,7 +32,7 @@ def cargar_libro(request):
     formulario= LibroFormulario()
     return render(request, "home/cargar_libro.html", {'formulario': formulario})
 
-
+@login_required
 def ver_libros(request):
             
     nombre = request.GET.get('nombre',None)
@@ -42,10 +45,10 @@ def ver_libros(request):
     formulario = BusquedaLibroFormulario()
     return render(request,"home/ver_libros.html", {'libros': libros, 'formulario': formulario})
 
-
+@login_required
 def acerca_de_nosotros(request):
     
     return render(request, "home/acerca_de_nosotros.html", {})
-
+@login_required
 def index(request):
     return render(request, "home/index.html")
