@@ -49,6 +49,7 @@ def ver_libros(request):
 def acerca_de_nosotros(request):
     
     return render(request, "home/acerca_de_nosotros.html", {})
+
 @login_required
 def index(request):
     return render(request, "home/index.html")

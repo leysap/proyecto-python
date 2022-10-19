@@ -22,8 +22,8 @@ def registrar(request):
     if request.method == 'POST':
         formulario = MiFormularioDeCreacion(request.POST)
         if formulario.is_valid():
-             formulario.save()
-             return redirect('index')
+            formulario.save()
+            return redirect('index')
     else:
         formulario = MiFormularioDeCreacion()
     
