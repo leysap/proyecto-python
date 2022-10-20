@@ -30,6 +30,8 @@ def cargar_libro(request):
             libro.save()
             
             return redirect("ver_libros")
+        else:
+            return render(request, 'home/cargar_libro.html', {'formulario': formulario})
         
     formulario= LibroFormulario()
     return render(request, "home/cargar_libro.html", {'formulario': formulario})
