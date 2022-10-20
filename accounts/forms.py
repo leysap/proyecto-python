@@ -4,7 +4,6 @@ from django import forms
 
 class MiFormularioDeCreacion(UserCreationForm):
 
-    username = forms.CharField(label='Usuario', max_length=20)
     email = forms.CharField()
     password1 = forms.CharField(label= 'Contraseña', widget=forms.PasswordInput)
     password2 = forms.CharField(label= 'Repetir Contraseña', widget=forms.PasswordInput)
@@ -12,4 +11,4 @@ class MiFormularioDeCreacion(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
-        help_text = { key: '' for key in fields}
+        help_texts = { key: '' for key in fields}
