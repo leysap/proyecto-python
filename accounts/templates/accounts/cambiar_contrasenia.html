@@ -5,6 +5,7 @@
 {% endblock titulo_pagina %}
 
 {% block mi_contenido %}
+<div class="container">
     <form action={% url 'cambiar_contrasenia' %} method="POST">
         {% csrf_token %}
         <table>
@@ -12,4 +13,5 @@
         </table>
         <button>Cambiar</button>
     </form>
+</div>
 {% endblock mi_contenido %}
