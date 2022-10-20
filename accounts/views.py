@@ -1,7 +1,10 @@
+from cmath import log
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login
-from accounts.forms import MiFormularioDeCreacion
+from accounts.forms import MiFormularioDeCreacion, EdidarPerfilFormulario
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import PasswordChangeView
     
 
 def mi_login(request):
@@ -28,3 +31,40 @@ def registrar(request):
         formulario = MiFormularioDeCreacion()
     
     return render (request, 'accounts/registrar.html', {'formulario': formulario})
+
+@login_required
+def perfil(request):
+    
+    return render (request, 'accounts/perfil.html', {})
+
+@login_required
+def editar_perfil(request):
+
+    user = request.user
+
+    if request.method == 'POST':
+        formulario = EdidarPerfilFormulario(request.POST)
+
+        if formulario.is_valid():
+            data_nueva = formulario.cleaned_data
+            user.first_name = data_nueva['first_name']
+            user.last_name = data_nueva['last_name']
+            user.email = data_nueva['email']
+
+            user.save()
+
+            return redirect('perfil')
+    else:
+        formulario = EdidarPerfilFormulario(
+            initial={
+                'first_name': user.first_name, 
+                'last_name': user.last_name ,
+                'email': user.email,
+                })
+    
+    return render (request, 'accounts/editar_perfil.html', {'formulario': formulario})
+
+class CambiarContrasenia(PasswordChangeView):
+
+    template_name = 'accounts/cambiar_contrasenia.html'
+    success_url = '/accounts/perfil/'

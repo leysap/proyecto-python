@@ -1,0 +1,24 @@
+{% extends 'home/base.html' %}
+
+{% block titulo_pagina %}
+<title>Perfil</title>
+{% endblock titulo_pagina %}
+
+{% block mi_contenido %} 
+
+<p style="font-size: X-large">Informacion del usuario: 
+
+    <li>Nombre:{{request.user.first_name}}</li>
+    <li>Apellido:{{request.user.last_name}}</li>
+    <li>Email:{{request.user.email}}</li>
+
+</p>
+
+<p>
+    <a href={% url 'editar_perfil'%}> Editar datos</a>
+</p>
+<p>
+    <a href={% url 'cambiar_contrasenia'%}> Cambiar contraseña</a>
+</p>
+
+{% endblock mi_contenido %}

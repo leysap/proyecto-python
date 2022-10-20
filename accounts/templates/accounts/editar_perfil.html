@@ -1,0 +1,19 @@
+{% extends 'home/base.html' %}
+
+{% block titulo_pagina %}
+<title>Editar Perfil</title>
+{% endblock titulo_pagina %}
+
+{% block mi_contenido %}
+<div class="container">
+
+    <form action={% url 'editar_perfil' %} method="POST">
+        {% csrf_token %}
+        <table>
+            {{formulario}}
+        </table>
+        <button>Guardar</button>
+    </form>
+</div>
+
+{% endblock mi_contenido %}
