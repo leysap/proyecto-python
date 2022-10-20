@@ -2,7 +2,7 @@ from cmath import log
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login
-from accounts.forms import MiFormularioDeCreacion, EdidarPerfilFormulario
+from accounts.forms import MiFormularioDeCreacion, EditarPerfilFormulario
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
     
@@ -43,7 +43,7 @@ def editar_perfil(request):
     user = request.user
 
     if request.method == 'POST':
-        formulario = EdidarPerfilFormulario(request.POST)
+        formulario = EditarPerfilFormulario(request.POST)
 
         if formulario.is_valid():
             data_nueva = formulario.cleaned_data
@@ -55,7 +55,7 @@ def editar_perfil(request):
 
             return redirect('perfil')
     else:
-        formulario = EdidarPerfilFormulario(
+        formulario = EditarPerfilFormulario(
             initial={
                 'first_name': user.first_name, 
                 'last_name': user.last_name ,
