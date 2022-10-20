@@ -103,26 +103,26 @@ def index(request):
 
 
 #VERSION CLASES BASADAS EN VISTAS: - FALTA EL BUSCADOR-
-# class ListaLibros(ListView):
-#     model=Libro
-#     template_name='home/ver_libros.html'
+class ListaLibros(LoginRequiredMixin,ListView):
+    model=Libro
+    template_name='home/ver_libros.html'
     
     
-# class CargarLibro(CreateView):
-#     model= Libro
-#     template_name= 'home/cargar_libro.html'
-#     success_url= '/ver-libros/'
-#     fields= ['nombre', 'escritor', 'descripcion', 'precio', 'fecha_creacion']
+class CargarLibro(LoginRequiredMixin,CreateView):
+    model= Libro
+    template_name= 'home/cargar_libro.html'
+    success_url= '/ver-libros/'
+    fields= ['nombre', 'escritor', 'descripcion', 'precio', 'fecha_creacion']
     
     
-# class EditarLibro(UpdateView):
-#     model=Libro
-#     success_url= '/ver-libros/'
-#     template_name= 'home/editar_libro.html'
-#     fields= ['nombre', 'escritor', 'descripcion', 'precio', 'fecha_creacion']
+class EditarLibro(LoginRequiredMixin, UpdateView):
+    model=Libro
+    success_url= '/ver-libros/'
+    template_name= 'home/editar_libro.html'
+    fields= ['nombre', 'escritor', 'descripcion', 'precio', 'fecha_creacion']
     
     
-# class EliminarLibro(DeleteView):
-#     model=Libro
-#     success_url='/ver-libros/'
-#     template_name='home/eliminar_libro.html'
+class EliminarLibro(LoginRequiredMixin, DeleteView):
+    model=Libro
+    success_url='/ver-libros/'
+    template_name='home/eliminar_libro.html'
