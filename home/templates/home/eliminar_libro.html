@@ -1,0 +1,21 @@
+{% extends 'home/base.html' %}
+
+{% block titulo_pagina %}
+<title>Eliminar Libro</title>
+{% endblock titulo_pagina %}
+
+{% block mi_contenido %}
+<div class="container">
+
+    <form action={% url 'eliminar_libro' object.id %} method="POST">
+        {% csrf_token %}
+        <p>
+            Confirma el borrado de {{object.nombre}} {{object.descripcion}}?
+        </p>
+        <p>
+        <button>Confirmar</button>
+        </p>
+    </form>
+</div>
+
+{% endblock mi_contenido %}
