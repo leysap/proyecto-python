@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from django.contrib.auth.forms import PasswordChangeForm
 
 class MiFormularioDeCreacion(UserCreationForm):
 
@@ -19,3 +20,14 @@ class EditarPerfilFormulario(forms.Form):
     first_name = forms.CharField(label='Nombre')
     last_name = forms.CharField(label='Apellido')
     avatar = forms.ImageField(required=False)
+    
+    
+class MiCambioDeContrasenia(PasswordChangeForm):
+    old_password = forms.CharField(label= 'Contraseña vieja', widget=forms.PasswordInput)
+    new_password1 = forms.CharField(label=  'Contraseña nueva', widget=forms.PasswordInput)
+    new_password2 = forms.CharField(label= 'Repetir Contraseña nueva', widget=forms.PasswordInput)
+    
+    class Meta:
+        model = User
+        fields = ['old_password', 'new_password1', 'new_password2']
+        help_texts = { key: '' for key in fields}

@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+
+{% block titulo_pagina %}
+<title>Ver libro</title>
+{% endblock titulo_pagina %}
+
+
+{% block mi_contenido %}
+<div class="container">
+
+    <p > 
+        <li><strong> Nombre: </strong> {{libro.nombre}}</li>
+        <li><strong>Escritor:</strong> {{libro.escritor}} </li>
+        <li><strong>Descripcion:</strong> {{libro.descripcion | safe}} </li>
+        <li><strong>Categoria: </strong> {{libro.categoria}}  
+        <li><strong> Precio: </strong>{{libro.precio}} </li>
+        <li><strong>Fecha de creación:</strong> {{libro.fecha_creacion}}</li></li> 
+        <br>
+        {% if libro.imagen %}
+            <img src={{libro.imagen.url}} alt="" width="200px" height="300">
+        {% endif %}
+        <br>
+        <a href={% url 'ver_libros' %}>Volver</a>
+    </p>
+
+</div>
+{% endblock mi_contenido %}

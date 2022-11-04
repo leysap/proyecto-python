@@ -14,16 +14,23 @@
         <button>Buscar</button>
     </form>
 
-    <p>
-    
+    <p style="margin:40px">
         {% comment %} EN CLASES BASADAS EN VISTAS COLOCAR EN EL IF: object_list, Y EN EL FOR: LIBRO IN object_list {% endcomment %}
     {% if libros %}
     {% for libro in libros %}
-        <li> 
-            <strong> Nombre: </strong> {{libro.nombre}} - <strong>Autor:</strong> {{libro.escritor}} - <strong>Descripcion:</strong> {{libro.descripcion}} - <strong>Categoria: </strong> {{libro.categoria}} - <strong> Precio: </strong>{{libro.precio}} - <strong>Fecha de creación:</strong> {{libro.fecha_creacion}}
-
+        <li style="margin:40px"> 
+            
+            <strong> Nombre: </strong> {{libro.nombre}} -
+            <strong>Escritor:</strong> {{libro.escritor}} 
+            <br>
+            {% comment %} {% if libro.imagen %}
+            <img src={{libro.imagen.url}} alt="" width="200px" height="300">
+            {% endif %} {% endcomment %}
+            <br>
+            <a href={% url 'ver_libro' libro.id %}>Ver Libro</a>
             <a href={% url 'editar_libro' libro.id %}>Editar</a>
             <a href={% url 'eliminar_libro' libro.id %}>Eliminar</a>
+       
         </li>
     {% endfor %}
     </p>

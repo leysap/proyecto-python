@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from home.forms import LibroFormulario, BusquedaLibroFormulario
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 @login_required
@@ -110,19 +110,23 @@ class ListaLibros(LoginRequiredMixin,ListView):
     
 class CargarLibro(LoginRequiredMixin,CreateView):
     model= Libro
-    template_name= 'home/cargar_libro.html'
     success_url= '/ver-libros/'
-    fields= ['nombre', 'escritor', 'descripcion', 'precio', 'fecha_creacion']
+    template_name= 'home/cargar_libro.html'
+    fields= ['nombre', 'escritor', 'descripcion', 'categoria','precio', 'fecha_creacion', 'imagen']
     
     
 class EditarLibro(LoginRequiredMixin, UpdateView):
     model=Libro
     success_url= '/ver-libros/'
     template_name= 'home/editar_libro.html'
-    fields= ['nombre', 'escritor', 'descripcion', 'precio', 'fecha_creacion']
+    fields= ['nombre', 'escritor', 'descripcion','categoria', 'precio', 'fecha_creacion', 'imagen']
     
     
 class EliminarLibro(LoginRequiredMixin, DeleteView):
     model=Libro
     success_url='/ver-libros/'
     template_name='home/eliminar_libro.html'
+
+class VerLibro(DetailView):
+    model= Libro 
+    template_name='home/ver_libro.html'
