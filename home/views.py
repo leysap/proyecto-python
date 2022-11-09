@@ -22,11 +22,13 @@ def cargar_libro(request):
             categoria= data['categoria']
             precio= data['precio']
             fecha_creacion= data['fecha_creacion']
+            creador = data['creador']
+            
 
             if not fecha_creacion:
                 fecha_creacion=datetime.now()
                 
-            libro = Libro(nombre=nombre, escritor=escritor, descripcion=descripcion, categoria=categoria, precio=precio,fecha_creacion=fecha_creacion)
+            libro = Libro(nombre=nombre, escritor=escritor, descripcion=descripcion, categoria=categoria, precio=precio, fecha_creacion=fecha_creacion, creador=creador)
             libro.save()
             
             return redirect("ver_libros")
@@ -65,6 +67,7 @@ def editar_libro(request,id):
             libro.categoria=datos['categoria']
             libro.precio=datos['precio']
             libro.fecha_creacion=datos['fecha_creacion']
+            libro.creador=datos['creador']
             libro.save()
             return redirect('ver_libros')
         else:
@@ -77,7 +80,8 @@ def editar_libro(request,id):
             'descripcion':libro.descripcion,
             'categoria':libro.categoria,
             'precio':libro.precio,
-            'fecha_creacion':libro.fecha_creacion
+            'fecha_creacion':libro.fecha_creacion,
+            'creador':libro.creador,
             }
         )
       
@@ -112,14 +116,14 @@ class CargarLibro(LoginRequiredMixin,CreateView):
     model= Libro
     success_url= '/ver-libros/'
     template_name= 'home/cargar_libro.html'
-    fields= ['nombre', 'escritor', 'descripcion', 'categoria','precio', 'fecha_creacion', 'imagen']
+    fields= ['nombre', 'escritor', 'descripcion', 'categoria','precio', 'fecha_creacion', 'imagen', 'creador']
     
     
 class EditarLibro(LoginRequiredMixin, UpdateView):
     model=Libro
     success_url= '/ver-libros/'
     template_name= 'home/editar_libro.html'
-    fields= ['nombre', 'escritor', 'descripcion','categoria', 'precio', 'fecha_creacion', 'imagen']
+    fields= ['nombre', 'escritor', 'descripcion','categoria', 'precio', 'fecha_creacion', 'imagen', 'creador']
     
     
 class EliminarLibro(LoginRequiredMixin, DeleteView):
