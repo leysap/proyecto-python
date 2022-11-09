@@ -10,7 +10,7 @@
     <form action={% url 'eliminar_libro' object.id %} method="POST">
         {% csrf_token %}
         <p>
-            Confirma el borrado de {{object.nombre}} {{object.descripcion}}?
+            Confirma el borrado de {{object.nombre}} , {{object.escritor}}?
         </p>
         <p>
         <button>Confirmar</button>
