@@ -19,7 +19,14 @@
     {% if libros %}
     {% for libro in libros %}
         <li style="margin:40px"> 
-            
+            {% if request.user.first_name %}
+            <strong>Autor del posteo:</strong>
+            {{request.user.first_name}} {{request.user.last_name}}<br>
+            {% else %}
+            <span>Complete su nombre en el perfil</span>
+            <a href={% url 'editar_perfil' %}> Ir a perfil</a>
+            <br>
+            {% endif %}
             <strong> Nombre: </strong> {{libro.nombre}} -
             <strong>Escritor:</strong> {{libro.escritor}} 
             <br>

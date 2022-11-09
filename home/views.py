@@ -22,13 +22,11 @@ def cargar_libro(request):
             categoria= data['categoria']
             precio= data['precio']
             fecha_creacion= data['fecha_creacion']
-            creador = data['creador']
             
-
             if not fecha_creacion:
                 fecha_creacion=datetime.now()
                 
-            libro = Libro(nombre=nombre, escritor=escritor, descripcion=descripcion, categoria=categoria, precio=precio, fecha_creacion=fecha_creacion, creador=creador)
+            libro = Libro(nombre=nombre, escritor=escritor, descripcion=descripcion, categoria=categoria, precio=precio, fecha_creacion=fecha_creacion)
             libro.save()
             
             return redirect("ver_libros")
@@ -67,7 +65,6 @@ def editar_libro(request,id):
             libro.categoria=datos['categoria']
             libro.precio=datos['precio']
             libro.fecha_creacion=datos['fecha_creacion']
-            libro.creador=datos['creador']
             libro.save()
             return redirect('ver_libros')
         else:
@@ -80,8 +77,7 @@ def editar_libro(request,id):
             'descripcion':libro.descripcion,
             'categoria':libro.categoria,
             'precio':libro.precio,
-            'fecha_creacion':libro.fecha_creacion,
-            'creador':libro.creador,
+            'fecha_creacion':libro.fecha_creacion
             }
         )
       
@@ -106,7 +102,7 @@ def index(request):
 
 
 
-#VERSION CLASES BASADAS EN VISTAS: - FALTA EL BUSCADOR-
+#VERSION CLASES BASADAS EN VISTAS:-
 class ListaLibros(LoginRequiredMixin,ListView):
     model=Libro
     template_name='home/ver_libros.html'
@@ -116,14 +112,13 @@ class CargarLibro(LoginRequiredMixin,CreateView):
     model= Libro
     success_url= '/ver-libros/'
     template_name= 'home/cargar_libro.html'
-    fields= ['nombre', 'escritor', 'descripcion', 'categoria','precio', 'fecha_creacion', 'imagen', 'creador']
-    
+    fields= ['nombre', 'escritor', 'descripcion', 'categoria','precio', 'fecha_creacion', 'imagen']
     
 class EditarLibro(LoginRequiredMixin, UpdateView):
     model=Libro
     success_url= '/ver-libros/'
     template_name= 'home/editar_libro.html'
-    fields= ['nombre', 'escritor', 'descripcion','categoria', 'precio', 'fecha_creacion', 'imagen', 'creador']
+    fields= ['nombre', 'escritor', 'descripcion','categoria', 'precio', 'fecha_creacion', 'imagen']
     
     
 class EliminarLibro(LoginRequiredMixin, DeleteView):

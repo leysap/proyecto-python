@@ -10,7 +10,6 @@ class Libro(models.Model):
     precio= models.DecimalField(max_digits=10, decimal_places=2)
     fecha_creacion= models.DateTimeField()
     imagen= models.ImageField(upload_to="libros", null=True, blank=True)
-    creador= models.CharField(max_length=100)
 
     def __str__(self):
         return f'{self.nombre}'
