@@ -6,7 +6,10 @@
 
 {% block mi_contenido %}
 <div class="container">
-
+    
+    <p>
+    <h3>Cargar libro</h3>
+    <br>
     <form action={% url 'cargar_libro' %} method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
         <table>
@@ -16,9 +19,12 @@
             {{form.media}}
             {{form}}
         </table>          
+    <br>
+        <br>
         <button>Crear</button>
-        </p>
+        <br>
     </form>
+    <p>
 </div>
 
 {% endblock mi_contenido %}
