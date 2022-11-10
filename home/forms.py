@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django import forms 
 
 class LibroFormulario(forms.Form):
-    nombre= forms.CharField(max_length=100)
+    nombre= forms.CharField(max_length=100, widget=forms.TextInput(attrs={"class": "nombre", "placeholder": "Nombre del libro"}))
     escritor= forms.CharField(max_length=30)
     descripcion= forms.CharField(max_length=500)    
     categoria= forms.CharField(max_length=30)    

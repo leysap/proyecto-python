@@ -7,7 +7,8 @@
 
 {% block mi_contenido %}
 <div class="container">
-    <h3>Listado de libros:</h3>
+    <br>
+    <h3 >Listado de libros</h3>
     
     <form action={% url 'ver_libros' %} method="GET">
             {{formulario}}
@@ -34,9 +35,9 @@
             <img src={{libro.imagen.url}} alt="" width="200px" height="300">
             {% endif %} {% endcomment %}
             <br>
-            <a href={% url 'ver_libro' libro.id %}>Ver Libro</a>
-            <a href={% url 'editar_libro' libro.id %}>Editar</a>
-            <a href={% url 'eliminar_libro' libro.id %}>Eliminar</a>
+            <button><a style="text-decoration:none; color:black" href={% url 'ver_libro' libro.id %}>Ver Libro</a></button>
+            <button><a style="text-decoration:none; color:black" href={% url 'editar_libro' libro.id %}>Editar</a></button>
+            <button><a style="text-decoration:none; color:black" href={% url 'eliminar_libro' libro.id %}>Eliminar</a></button>
        
         </li>
     {% endfor %}
