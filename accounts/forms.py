@@ -20,6 +20,7 @@ class EditarPerfilFormulario(forms.Form):
     first_name = forms.CharField(label='Nombre')
     last_name = forms.CharField(label='Apellido')
     avatar = forms.ImageField(required=False)
+    web = forms.CharField(label='Web')
     
     
 class MiCambioDeContrasenia(PasswordChangeForm):
