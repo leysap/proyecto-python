@@ -111,14 +111,33 @@ Esta aplicación se creó para el login/logout y registro.
 
 
 ## >> ARCHIVOS - APP ACCOUNTS
-## forms.py 
-
 
 ## models.py
+- ExtensionUsuario:
+
+## forms.py 
+
+- MiFormularioDeCreacion: 
+- EditarPerfilFormulario:
+- MiCambioDeContrasenia:
 
 ## urls.py 
+Se encuentran los siguientes path:
+
+- path('login/') Vista basada en funcion (views.mi_login).
+- path('registrar/') Vista basada en funcion (views.registrar).
+- path('logout/') CBV (LogoutView.as_view).
+- path('perfil/') Vista basada en funcion ( views.perfil).
+- path('perfil/editar/') Vista basada en funcion (views.editar_perfil).
+- path('perfil/cambiar-contrasenia/') Clase Basada en Vista (CBV) (views.CambiarContrasenia).
 
 ## views.py
+- mi_login:
+- registrar:
+- perfil:
+- editar_perfil:
+- class CambiarContrasenia:
+
 
 ## >> CARPETAS
 ## templates/accounts
