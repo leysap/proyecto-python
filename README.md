@@ -4,6 +4,10 @@
 Proyecto realizado con Python usando Django en el curso de Coderhouse.
 Se trata de un blog para poder cargar libros, guardarlos en una base de datos y poder visualizarlos. AsÍ como también, editarlos o eliminarlos.
 
+# **INTEGRANTES**
+- Leysa Melina Pozo [Github](https://github.com/leysap)
+- Leonardo Bono [Github](https://github.com/leoncio1)
+- Julián Gil [Github](https://github.com/AsoreFox)
 ## ¿Como se levanta el proyecto?
 
 Para este proyecto se creó un entorno virtual. 
@@ -125,3 +129,5 @@ Esta aplicación se creó para el login/logout y registro.
 - logout.html:
 - perfil.html:
 - registrar.html:
+
+
