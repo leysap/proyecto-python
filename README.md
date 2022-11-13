@@ -44,8 +44,6 @@ También, en la misma clase se creó una función (magic methods):__str__ , para
 En este archivo se encuentra el formulario que tiene Django:
 
 - Para ello tuvimos que importar forms de Django.
-- Se creó una clase LibroFormulario que contiene sus siguientes atributos:
-nombre, escritor, descripción, categoria, precio , fecha de creacion y imagen.
 - Se creó una clase BusquedaLibroFormulario que contiene como único atributo: nombre. Se utilizará para realizar la búsqueda de un libro por su nombre.
 
 ## views.py
@@ -77,13 +75,16 @@ Si el usuario ha iniciado sesión entonces el código de vista se ejecutará com
 
 - Se crearon los siguientes path:
 
-1. '': se redirige al index (página principal).
-2. 'cargar-libro/': se visualiza el formulario para poder cargar un libro a la base de datos.
-3. 'ver-libros/': se puede visualizar la lista de libros cargados.
-4. 'nosotros/': breve reseña del equipo del proyecto.
+1. '': se redirige al index (página principal). Vista basada en función.
+2. 'cargar-libro/': se visualiza el formulario para poder cargar un libro a la base de datos. Clase Basada en Vista.
+3. 'ver-libros/': se puede visualizar la lista de libros cargados. Vista basada en función.
+4. 'nosotros/': breve reseña del equipo del proyecto. Vista basada en función.
+5. 'eliminar/< int:pk >': elimina el libro seleccionado. Clase Basada en Vista.
+6. 'ver_libro/ < int:pk >': muestra el libro con mayor información. Clase Basada en Vista.
+7. 'editar/< int:pk >': muestra su template para poder editar la información de ese libro en particular. Clase Basada en Vista.
  
 
-## >>> CARPETAS
+## >>> *CARPETAS - APP HOME*
 ## static
 
 Se encuentran los archivos estáticos de css, img, iconos, js.
@@ -96,7 +97,7 @@ Se encuentran los archivos estáticos de css, img, iconos, js.
 
 Los archivos templates creados son:
 
-- base.html: archivo base, se encuentran las etiquetas html, head, body (dentro de éste: nav, footer y los scripts de js). En la etiqueta nav se crearon enlaces directos para cada template. Además, se usó los "block" para que el resto (templates) pueda cargar su contenido. 
+- base.html: archivo base, se encuentran las etiquetas html, head, body (dentro de éste: nav, footer y los scripts de js). En la etiqueta nav se crearon enlaces directos para cada template. Además, se usó los "block" para que el resto (templates) pueda cargar su contenido. También, se encuentra los enlaces de iniciar sesion, cerrar sesion y de registrarse.
 - acerca_de_nosotros.html: siemple vista que contiene una breve reseña del equipo.
 - cargar_libro.html: Se agrego una pantalla que permite la carga de los libros a nuestra base de datos, utilizando la clase y la tabla previamente creada.
 - index.html: Se usa como pantalla principal de nuestro proyecto.
@@ -109,44 +110,58 @@ Los archivos templates creados son:
 
 Esta aplicación se creó para el login/logout y registro.
 
-
-## >> ARCHIVOS - APP ACCOUNTS
+## >> *ARCHIVOS - APP ACCOUNTS*
 
 ## models.py
-- ExtensionUsuario:
+
+- ExtensionUsuario: utiliza campos de: avatar(ImageField), web(Charfield) y user(OneToOneField).
+Este modelo se relaciona con el usuario.
+También en la misma clase, se creó una función (magic methods):__str__ , para que se visualice entrando en la base de datos (por admin) el nombre del usuario.
+
+Para el avatar se tuvo que instalar Pillow. Para este campo se indicó a qué carpeta se van a guardar las imágenes (upload_to='avatares'). 
+
 
 ## forms.py 
 
-- MiFormularioDeCreacion: 
-- EditarPerfilFormulario:
-- MiCambioDeContrasenia:
+- MiFormularioDeCreacion: en esta clase se crea un formulario para utilizarlo en el registro. Tiene de campos: 'email,  password1, password2'. Dentro de esta clase se agregó un class Meta (identifica ciertos valores que va a tener el formulario como configuraciones).
+- EditarPerfilFormulario: se crea un formulario para editar los datos del perfil. Tiene de campos: 'email, first_name, last_name, avatar, web'.
+- MiCambioDeContrasenia: hereda de el PasswordChangeForm. Se utiliza de campos: 'old_password, new_password1 y new_password2'. Dentro de esta clase tambien se agregó un class Meta.
 
 ## urls.py 
 Se encuentran los siguientes path:
 
-- path('login/') Vista basada en funcion (views.mi_login).
-- path('registrar/') Vista basada en funcion (views.registrar).
-- path('logout/') CBV (LogoutView.as_view).
-- path('perfil/') Vista basada en funcion ( views.perfil).
-- path('perfil/editar/') Vista basada en funcion (views.editar_perfil).
-- path('perfil/cambiar-contrasenia/') Clase Basada en Vista (CBV) (views.CambiarContrasenia).
+- path('login/') Vista basada en función.
+- 'registrar/' Vista basada en función.
+- 'logout/' Clase Basada en Vista (CBV). 
+- 'perfil/' Vista basada en función.
+- 'perfil/editar/' Vista basada en función.
+- 'perfil/cambiar-contrasenia/' Clase Basada en Vista (CBV).
 
 ## views.py
-- mi_login:
-- registrar:
-- perfil:
-- editar_perfil:
-- class CambiarContrasenia:
 
+### *Vistas basadas en funciones*
+- mi_login: en esta función se utiliza el formulario que nos brinda Django, con el AuthenticationForm y login. Permite loguearse. Una vez logueado, redirige al index.
+- registrar: como su nombre lo indica, permite registrarse utilizando MiFormularioDeCreacion (creado en forms.py).
+- perfil: renderiza su correspondiente template('perfil'), mostrando información del usuario logueado. Se utilizó en esta función el decorador login_required.
+- editar_perfil: utiliza EditarPerfilFormulario (en forms.py) y ExtensionUsuario (models.py) para poder editar los datos del perfil: 'email, nombre, apellido, avatar, web'.
 
-## >> CARPETAS
-## templates/accounts
+Se utilizó el decorador login_required para restringir el acceso a nuestras funciones, usuarios que no están logueados.
 
-- cambiar_contrasenia.html:
-- editar_perfil.html:
-- login.html:
-- logout.html:
-- perfil.html:
-- registrar.html:
+### *Clases Basadas en Vistas*
+
+- class CambiarContrasenia: esta clase hereda de la vista PasswordChangeView. Utiliza un template_name (cambiar_contrasenia), un success_url (se coloca una url, template a donde se va a redirigir luego de cambiar la contraseña) y un form_class(MiCambioDeContrasenia).
+
+Se utilizó para esta clase, el mixin LoginRequiredMixin, que nos va permitir limitar a un usuario que no esta logueado para poder acceder a una parte de nuestra página. 
+
+## >> *CARPETAS - APP ACCOUNTS*
+
+## templates 
+
+- login.html: muestra el formulario de login,(el que nos brinda Django) con su usuario y contraseña.
+- logout.html: se creo una CBV desde el urls.py trayendo desde django a LogoutView. En este template confirma el cerrado de sesion.
+- registrar.html: muestra el formulario creado (de MiFormularioDeCreacion) que permite registrarse con sus campos de 'email, contraseña y repetir contraseña'.
+- perfil.html: muestra información del usuario logueado. Con su avatar, nombre, apellido, email y link a una página (web). Se agregó tambien dos enlaces: 1. para editar datos del perfil, 2. para cambiar la contraseña.
+- editar_perfil.html: muestra el formulario creado (de EditarPerfilFormulario).
+- cambiar_contrasenia.html: muestra el formulario (de la CBV CambiarContrasenia) para cambiar la constraseña.
 
 

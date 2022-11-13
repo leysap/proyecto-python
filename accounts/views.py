@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
 from accounts.forms import MiFormularioDeCreacion, EditarPerfilFormulario, MiCambioDeContrasenia
 from django.contrib.auth.decorators import login_required
@@ -35,8 +35,7 @@ def registrar(request):
 
 @login_required
 def perfil(request):
-    # extensionUsuario, es_nuevo=ExtensionUsuario.objects.get_or_create(user=request.user)
-    
+ 
     return render (request, 'accounts/perfil.html', {})
 
 @login_required

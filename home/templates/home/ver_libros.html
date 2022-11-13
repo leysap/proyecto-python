@@ -16,7 +16,7 @@
     </form>
 
     <p style="margin:40px">
-        {% comment %} EN CLASES BASADAS EN VISTAS COLOCAR EN EL IF: object_list, Y EN EL FOR: LIBRO IN object_list {% endcomment %}
+
     {% if libros %}
     {% for libro in libros %}
         <li style="margin:40px"> 
@@ -31,9 +31,6 @@
             <strong> Nombre: </strong> {{libro.nombre}} -
             <strong>Escritor:</strong> {{libro.escritor}} 
             <br>
-            {% comment %} {% if libro.imagen %}
-            <img src={{libro.imagen.url}} alt="" width="200px" height="300">
-            {% endif %} {% endcomment %}
             <br>
             <button><a style="text-decoration:none; color:black" href={% url 'ver_libro' libro.id %}>Ver Libro</a></button>
             <button><a style="text-decoration:none; color:black" href={% url 'editar_libro' libro.id %}>Editar</a></button>

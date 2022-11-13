@@ -10,8 +10,6 @@
     <form action={% url 'editar_libro' libro.id %} method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
         <table>
-            {% comment %} {{formulario}} {% endcomment %}
-            {% comment %} VERSION EN CLASES BASADA EN VISTA {% endcomment %}
             {{form.media}}
             {{form}}
             

@@ -1,10 +1,9 @@
 from home.models import Libro
-from datetime import datetime
-from django.shortcuts import render, redirect
-from home.forms import LibroFormulario, BusquedaLibroFormulario
+from django.shortcuts import render
+from home.forms import  BusquedaLibroFormulario
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView
+from django.views.generic import  DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 @login_required

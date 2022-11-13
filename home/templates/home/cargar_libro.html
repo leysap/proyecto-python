@@ -13,9 +13,6 @@
     <form action={% url 'cargar_libro' %} method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
         <table>
-            {% comment %} VERSION VISTA NORMAL {% endcomment %}
-            {% comment %} {{formulario}} {% endcomment %}
-            
             {{form.media}}
             {{form}}
         </table>          
