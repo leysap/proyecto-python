@@ -73,7 +73,7 @@ Si el usuario ha iniciado sesión entonces el código de vista se ejecutará com
 
 ## urls.py
 
-- Se crearon los siguientes path:
+Se crearon los siguientes path:
 
 1. '': se redirige al index (página principal). Vista basada en función.
 2. 'cargar-libro/': se visualiza el formulario para poder cargar un libro a la base de datos. Clase Basada en Vista.
@@ -123,8 +123,8 @@ Para el avatar se tuvo que instalar Pillow. Para este campo se indicó a qué ca
 
 ## forms.py 
 
-- MiFormularioDeCreacion: en esta clase se crea un formulario para utilizarlo en el registro. Tiene de campos: 'email,  password1, password2'. Dentro de esta clase se agregó un class Meta (identifica ciertos valores que va a tener el formulario como configuraciones).
-- EditarPerfilFormulario: se creo un formulario para editar los datos del perfil. Tiene de campos: 'email, first_name, last_name, avatar, web'.
+- MiFormularioDeCreacion: en esta clase se creó un formulario para utilizarlo en el registro. Tiene de campos: 'email,  password1, password2'. Dentro de esta clase se agregó un class Meta (identifica ciertos valores que va a tener el formulario como configuraciones).
+- EditarPerfilFormulario: se creó un formulario para editar los datos del perfil. Tiene de campos: 'email, first_name, last_name, avatar, web'.
 - MiCambioDeContrasenia: hereda de el PasswordChangeForm. Se utiliza los siguientes campos: 'old_password, new_password1 y new_password2'. Dentro de ésta clase tambien se agregó un class Meta.
 
 ## urls.py 
