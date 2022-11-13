@@ -22,7 +22,7 @@ En consola:
 
 ## ***ProyectoDjango***
  
-Carpeta que se encuentran las configuraciones del proyecto. En ésta anexamos la aplicación "home", para trabajar nuestras vistas y distintos tipos de pantallas de nuestra web.
+Carpeta que se encuentran las configuraciones del proyecto. En ésta anexamos la aplicación "home" y "accounts", para trabajar nuestras vistas y distintos tipos de pantallas de nuestra web.
 
 # ***APLICACIONES*** 
 
@@ -62,10 +62,10 @@ Si el usuario ha iniciado sesión entonces el código de vista se ejecutará com
 
 | CBV| Descripcion
    |---|---|
-   | CargarLibro | se carga un libro con sus campos/fields de: nombre, descripcion, escritor, categoria, imagen, fecha de creacion y precio.
-   | EditarLibro | se edita los datos cargados anteriormente tomando los mismos campos/fields que la clase CargarLibro.
-   | EliminarLibro | elimina el libro seleccionado visualizando su template correspondiente para su confirmación.
-   | VerLibro | muestra el template ver_libro.html (para visualizar todos los datos cargados de ese libro en particular).
+   | CargarLibro | Se carga un libro con sus campos/fields de: nombre, descripcion, escritor, categoria, imagen, fecha de creacion y precio.
+   | EditarLibro | Se edita los datos cargados anteriormente tomando los mismos campos/fields que la clase CargarLibro.
+   | EliminarLibro | Elimina el libro seleccionado visualizando su template correspondiente para su confirmación.
+   | VerLibro | Muestra el template ver_libro.html (para visualizar todos los datos cargados de ese libro en particular).
 
 - Todas toman como modelo: Libro.
 - El mismo success_url("/ver-libros/" ) para todas las clases.
@@ -97,11 +97,11 @@ Se encuentran los archivos estáticos de css, img, iconos, js.
 
 Los archivos templates creados son:
 
-- base.html: archivo base, se encuentran las etiquetas html, head, body (dentro de éste: nav, footer y los scripts de js). En la etiqueta nav se crearon enlaces directos para cada template. Además, se usó los "block" para que el resto (templates) pueda cargar su contenido. También, se encuentra los enlaces de iniciar sesion, cerrar sesion y de registrarse.
-- acerca_de_nosotros.html: siemple vista que contiene una breve reseña del equipo.
-- cargar_libro.html: Se agrego una pantalla que permite la carga de los libros a nuestra base de datos, utilizando la clase y la tabla previamente creada.
-- index.html: Se usa como pantalla principal de nuestro proyecto.
-- ver_libros.html: Se muestra el listado de libros creados. Con su nombre y el escritor. En este mismo se encuentra el buscador de libro por su nombre. Si no lo encuentra, se muestra un mensaje de no hay resultados. Además, se muestra el autor del posteo(tomando el nombre del usuario que se ha registrado).
+- base.html: archivo base, se encuentran las etiquetas html, head, body (dentro de éste: nav, footer y los scripts de js). En la etiqueta nav se crearon enlaces directos para cada template. Además, se usó los "block" para que el resto (templates) pueda cargar su contenido. También, se encuentran los enlaces de iniciar sesion, cerrar sesion y de registrarse.
+- acerca_de_nosotros.html: simple vista que contiene una breve reseña del equipo.
+- cargar_libro.html: se agregó una pantalla que permite la carga de los libros a nuestra base de datos, utilizando la clase y la tabla previamente creada.
+- index.html: se utiliza como pantalla principal de nuestro proyecto.
+- ver_libros.html: se muestra el listado de libros creados. Con su nombre y el escritor. En este mismo se encuentra el buscador de libro por su nombre. Si no lo encuentra, se muestra un mensaje de 'no hay resultados'. Además, se muestra el autor del posteo (tomando el nombre del usuario que se ha registrado), si no esta completado, pide que complete su nombre en su perfil con un enlace que lo redirige.
 - ver_libro.html: Se muestra el libro de manera independiente con los siguientes datos: nombre, escritor, descripcion, categoria, precio, fecha de creacion y imagen.
 - eliminar_libro.html: En este template se confirma el borrado del libro.
 - editar_libro.html: muestra el formulario con los datos cargados anteriormente para poder editarlos.
@@ -124,18 +124,23 @@ Para el avatar se tuvo que instalar Pillow. Para este campo se indicó a qué ca
 ## forms.py 
 
 - MiFormularioDeCreacion: en esta clase se crea un formulario para utilizarlo en el registro. Tiene de campos: 'email,  password1, password2'. Dentro de esta clase se agregó un class Meta (identifica ciertos valores que va a tener el formulario como configuraciones).
-- EditarPerfilFormulario: se crea un formulario para editar los datos del perfil. Tiene de campos: 'email, first_name, last_name, avatar, web'.
-- MiCambioDeContrasenia: hereda de el PasswordChangeForm. Se utiliza de campos: 'old_password, new_password1 y new_password2'. Dentro de esta clase tambien se agregó un class Meta.
+- EditarPerfilFormulario: se creo un formulario para editar los datos del perfil. Tiene de campos: 'email, first_name, last_name, avatar, web'.
+- MiCambioDeContrasenia: hereda de el PasswordChangeForm. Se utiliza los siguientes campos: 'old_password, new_password1 y new_password2'. Dentro de ésta clase tambien se agregó un class Meta.
 
 ## urls.py 
 Se encuentran los siguientes path:
 
-- path('login/') Vista basada en función.
+*Vista basada en funcion*
+
+- 'login/' Vista basada en función.
 - 'registrar/' Vista basada en función.
-- 'logout/' Clase Basada en Vista (CBV). 
 - 'perfil/' Vista basada en función.
 - 'perfil/editar/' Vista basada en función.
+
+*Clases Basadas en Vistas*
+
 - 'perfil/cambiar-contrasenia/' Clase Basada en Vista (CBV).
+- 'logout/' Clase Basada en Vista (CBV). 
 
 ## views.py
 
@@ -149,7 +154,7 @@ Se utilizó el decorador login_required para restringir el acceso a nuestras fun
 
 ### *Clases Basadas en Vistas*
 
-- class CambiarContrasenia: esta clase hereda de la vista PasswordChangeView. Utiliza un template_name (cambiar_contrasenia), un success_url (se coloca una url, template a donde se va a redirigir luego de cambiar la contraseña) y un form_class(MiCambioDeContrasenia).
+- class CambiarContrasenia: esta clase hereda de la vista PasswordChangeView. Utiliza un template_name (cambiar_contrasenia), un success_url (se coloca una url, template a donde se va a redirigir luego de cambiar la contraseña) y un form_class (MiCambioDeContrasenia).
 
 Se utilizó para esta clase, el mixin LoginRequiredMixin, que nos va permitir limitar a un usuario que no esta logueado para poder acceder a una parte de nuestra página. 
 
@@ -157,8 +162,8 @@ Se utilizó para esta clase, el mixin LoginRequiredMixin, que nos va permitir li
 
 ## templates 
 
-- login.html: muestra el formulario de login,(el que nos brinda Django) con su usuario y contraseña.
-- logout.html: se creo una CBV desde el urls.py trayendo desde django a LogoutView. En este template confirma el cerrado de sesion.
+- login.html: muestra el formulario de login (el que nos brinda Django) con su usuario y contraseña.
+- logout.html: se creo una CBV desde el urls.py trayendo desde Django a LogoutView. En este template confirma el cerrado de sesion.
 - registrar.html: muestra el formulario creado (de MiFormularioDeCreacion) que permite registrarse con sus campos de 'email, contraseña y repetir contraseña'.
 - perfil.html: muestra información del usuario logueado. Con su avatar, nombre, apellido, email y link a una página (web). Se agregó tambien dos enlaces: 1. para editar datos del perfil, 2. para cambiar la contraseña.
 - editar_perfil.html: muestra el formulario creado (de EditarPerfilFormulario).
