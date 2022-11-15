@@ -70,6 +70,7 @@ Si el usuario ha iniciado sesión entonces el código de vista se ejecutará com
 - Todas toman como modelo: Libro.
 - El mismo success_url("/ver-libros/" ) para todas las clases.
 - Con su template_name correspondiente.
+- Se utilizó mixin LoginRequiredMixin para restringuir el acceso a mis CBV.
 
 ## urls.py
 
